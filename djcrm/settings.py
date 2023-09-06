@@ -5,14 +5,16 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 
+environ.Env.read_env()
+
 READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
 if READ_DOT_ENV_FILE:
     environ.Env.read_env()
 
-# DEBUG = env('DEBUG')
-# SECRET_KEY = env('SECRET_KEY')
-DEBUG = True
-SECRET_KEY = "1234"
+DEBUG = env('DEBUG')
+SECRET_KEY = env('SECRET_KEY')
+# DEBUG = True
+# SECRET_KEY = "1234"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,14 +78,21 @@ WSGI_APPLICATION = 'djcrm.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': env("DB_NAME"),
+#         'USER': env("DB_USER"),
+#         'PASSWORD': env("DB_PASSWORD"),
+#         'HOST': env("DB_HOST"),
+#         'PORT': env("DB_PORT"),
+#     }
+# }
+#added
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env("DB_NAME"),
-        'USER': env("DB_USER"),
-        'PASSWORD': env("DB_PASSWORD"),
-        'HOST': env("DB_HOST"),
-        'PORT': env("DB_PORT"),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
