@@ -1,6 +1,6 @@
 asgiref==3.7.2
 crispy-tailwind==0.2.0
-Django==4.0.0
+Django==3.9.0
 django-crispy-forms==1.10.0
 django-environ==0.4.5
 django-tailwind==3.6.0
