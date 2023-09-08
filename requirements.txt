@@ -1,12 +1,13 @@
 asgiref==3.7.2
 crispy-tailwind==0.2.0
-Django==3.9.0
+Django==3.2.7
 django-crispy-forms==1.10.0
 django-environ==0.4.5
 django-tailwind==3.6.0
 gunicorn==20.0.4
-Pillow
-psycopg2-binary
+Pillow==9.0.0
+psycopg2==2.9.7
+psycopg2-binary==2.9.7y
 pytz==2020.4
 sqlparse==0.4.1
 whitenoise==5.2.0
