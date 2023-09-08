@@ -11,3 +11,4 @@ psycopg2-binary==2.9.7
 pytz==2020.4
 sqlparse==0.4.1
 whitenoise==5.2.0
+dj-database-url==2.1.0
