@@ -90,14 +90,8 @@ WSGI_APPLICATION = 'djcrm.wsgi.application'
 # }
 #added
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse('postgres://movies_8k05_user:6TcEIG7nKEy9fv0P7YuBvS0h3xsCWEXV@dpg-cjfsmkvr2b1s73fvvvig-a.oregon-postgres.render.com/movies_8k05')
 }
-DATABASES['default'] = dj_database_url.parse(
-    'postgres://movies_8k05_user:6TcEIG7nKEy9fv0P7YuBvS0h3xsCWEXV@dpg-cjfsmkvr2b1s73fvvvig-a.oregon-postgres.render.com/movies_8k05')
-
 
 # settings.py
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
