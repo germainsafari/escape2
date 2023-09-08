@@ -189,3 +189,5 @@ LOGGING = {
 }
 
 TAILWIND_APP_NAME = 'theme'
+
+
