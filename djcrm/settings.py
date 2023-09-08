@@ -1,20 +1,20 @@
 from pathlib import Path
 import environ
+import dj_database_url
+# env = environ.Env(
+#     DEBUG=(bool, False)
+# )
 
-env = environ.Env(
-    DEBUG=(bool, False)
-)
+# environ.Env.read_env()
 
-environ.Env.read_env()
+# READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
+# if READ_DOT_ENV_FILE:
+#     environ.Env.read_env()
 
-READ_DOT_ENV_FILE = env.bool('READ_DOT_ENV_FILE', default=False)
-if READ_DOT_ENV_FILE:
-    environ.Env.read_env()
-
-DEBUG = env('DEBUG')
-SECRET_KEY = env('SECRET_KEY')
-# DEBUG = True
-# SECRET_KEY = "1234"
+# DEBUG = env('DEBUG')
+# SECRET_KEY = env('SECRET_KEY')
+DEBUG=True
+SECRET_KEY="0syczy(g(_$&x4f%i=n7j4$jwcm$lc9htfqt7y5mho$#%2wjcl"
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -95,7 +95,12 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+DATABASES['default'] = dj_database_url.parse(
+    'postgres://movies_8k05_user:6TcEIG7nKEy9fv0P7YuBvS0h3xsCWEXV@dpg-cjfsmkvr2b1s73fvvvig-a.oregon-postgres.render.com/movies_8k05')
 
+
+# settings.py
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -150,28 +155,28 @@ LOGOUT_REDIRECT_URL = "/"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 CRISPY_TEMPLATE_PACK = 'tailwind'
+# ALLOWED_HOSTS = ["*"]
+# if not DEBUG:
+#     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+#     SECURE_SSL_REDIRECT = True
+#     SESSION_COOKIE_SECURE = True
+#     CSRF_COOKIE_SECURE = True
+#     SECURE_BROWSER_XSS_FILTER = True
+#     SECURE_CONTENT_TYPE_NOSNIFF = True
+#     SECURE_HSTS_SECONDS = 31536000  # 1 year
+#     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+#     SECURE_HSTS_PRELOAD = True
+#     X_FRAME_OPTIONS = "DENY"
 
-if not DEBUG:
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_BROWSER_XSS_FILTER = True
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SECURE_HSTS_SECONDS = 31536000  # 1 year
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
-    X_FRAME_OPTIONS = "DENY"
+#     ALLOWED_HOSTS = ["*"]
 
-    ALLOWED_HOSTS = ["*"]
-
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_HOST = env("EMAIL_HOST")
-    EMAIL_HOST_USER = env("EMAIL_HOST_USER")
-    EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
-    EMAIL_USE_TLS = True
-    EMAIL_PORT = env("EMAIL_PORT")
-    DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
+#     EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+#     EMAIL_HOST = env("EMAIL_HOST")
+#     EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+#     EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+#     EMAIL_USE_TLS = True
+#     EMAIL_PORT = env("EMAIL_PORT")
+#     DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
 
 
 LOGGING = {
