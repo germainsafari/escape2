@@ -64,12 +64,15 @@ class DashboardView(OrganisorAndLoginRequiredMixin, generic.TemplateView):
         ).count()
 
         # How many converted leads in the last 30 days
-        converted_category = Category.objects.get(name="Converted")
-        converted_in_past30 = Lead.objects.filter(
-            organisation=user.userprofile,
-            category=converted_category,
-            converted_date__gte=thirty_days_ago
-        ).count()
+        try:
+            converted_category = Category.objects.get(name="Converted")
+            converted_in_past30 = Lead.objects.filter(
+                organisation=user.userprofile,
+                category=converted_category,
+                converted_date__gte=thirty_days_ago
+            ).count()
+        except Category.DoesNotExist:
+            converted_in_past30 = 0
 
         context.update({
             "total_lead_count": total_lead_count,
@@ -77,7 +80,6 @@ class DashboardView(OrganisorAndLoginRequiredMixin, generic.TemplateView):
             "converted_in_past30": converted_in_past30
         })
         return context
-
 
 def landing_page(request):
     return render(request, "landing.html")
